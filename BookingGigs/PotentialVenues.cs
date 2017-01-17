@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookingGigs
 {
+  
+
     class PotentialVenues
     {
         public string Name;
@@ -13,9 +15,10 @@ namespace BookingGigs
         public int Capacity;
         public bool HasSound;
         public string Contact;
-        public string OpenDates;
-        public float Pay;
-        public string NoiseLevelAllowed;
+        public List<Seasons> OpenDates;
+        public int Pay;
+        public List<NoiseLevel> NoiseLevelAllowed;
+        public bool booked;
 
 
         public PotentialVenues
@@ -25,9 +28,10 @@ namespace BookingGigs
             int _capacity,
             bool _hasSound,
             string _contact,
-            string _openDates,
-            float _pay,
-            string _noiseLevelAllowed
+            List<Seasons> _openDates,
+            int _pay,
+            List<NoiseLevel> _noiseLevelAllowed,
+            bool _booked
             )
         {
             Name = _name;
@@ -38,6 +42,7 @@ namespace BookingGigs
             OpenDates = _openDates;
             Pay = _pay;
             NoiseLevelAllowed = _noiseLevelAllowed;
+            booked = _booked;
         }
 
 

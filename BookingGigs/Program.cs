@@ -26,6 +26,20 @@ namespace BookingGigs
                 800, new List<Styles>() { Styles.Bluegrass, Styles.Acoustic, Styles.Pop },
                 new List<NoiseLevel>() { NoiseLevel.FullBand, NoiseLevel.Acoustic },
                 new List<Seasons>() { Seasons.Summer, Seasons.Spring, Seasons.Fall, Seasons.Winter }, "Highlands, NC",false);
+
+            PotentialVenues handlebar = new PotentialVenues("The Handlebar", "Greenville,SC", 300, true,
+                "@handlebar", new List<Seasons>() { Seasons.Spring, Seasons.Fall }, 900,
+                new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand },false);
+
+            PotentialVenues smileys = new PotentialVenues("Smiley's Listening Room", "Greenville,SC", 60, false,
+                "@smileybooking", new List<Seasons>() { Seasons.Winter, Seasons.Spring }, 500,
+                new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.Acoustic }, false);
+
+            PotentialVenues peaceCenter = new PotentialVenues("The Peace Center", "Greenville,SC", 300, true,
+                "@peacecenterbooking", new List<Seasons>() { Seasons.Summer, Seasons.Fall }, 2400,
+                new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand, NoiseLevel.Acoustic }, false);
+
+
         }
     }
 }

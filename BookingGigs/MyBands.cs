@@ -33,6 +33,7 @@ namespace BookingGigs
         public int BandSize;
         public string BandName;
         public string BandContact;
+        public string AskingPay;
         public int MinimumPay;
         public List<Styles> Styles;
         public List<NoiseLevel> NoiseLevel;
@@ -46,10 +47,11 @@ namespace BookingGigs
             string _name,
             int _bandsize,
             string _bandContact,
-            int _minpay,
+            string _askingPay,
+            //int _minpay,
             List<Styles> _Styles,
             List<NoiseLevel> _NoiseLevel,
-            List<Seasons> _AvailableDates,
+            //List<Seasons> _AvailableDates,
             string _CurrentLocale,
             bool _booked
             )
@@ -57,15 +59,17 @@ namespace BookingGigs
             BandName = _name;
             BandSize = _bandsize;
             BandContact = _bandContact;
-            MinimumPay = _minpay;
+            AskingPay = _askingPay;
+            //MinimumPay = _minpay;
             Styles = _Styles;
             NoiseLevel = _NoiseLevel;
-            AvailableDates = _AvailableDates;
+            //AvailableDates = _AvailableDates;
             CurrentLocale = _CurrentLocale;
             Booked = _booked;
-                
 
         }
+
+        public 
 
 
     }

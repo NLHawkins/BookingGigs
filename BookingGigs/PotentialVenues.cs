@@ -16,6 +16,7 @@ namespace BookingGigs
         public bool HasSound;
         public string Contact;
         public List<Seasons> OpenDates;
+        public int initialPay;
         public int Pay;
         public List<NoiseLevel> NoiseLevelAllowed;
         public bool booked;
@@ -29,6 +30,7 @@ namespace BookingGigs
             bool _hasSound,
             string _contact,
             List<Seasons> _openDates,
+            int _InitialPay,
             int _pay,
             List<NoiseLevel> _noiseLevelAllowed,
             bool _booked
@@ -40,6 +42,7 @@ namespace BookingGigs
             HasSound = _hasSound;
             Contact = _contact;
             OpenDates = _openDates;
+            initialPay = _InitialPay;
             Pay = _pay;
             NoiseLevelAllowed = _noiseLevelAllowed;
             booked = _booked;

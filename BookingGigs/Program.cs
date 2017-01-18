@@ -84,25 +84,20 @@ namespace BookingGigs
                 }
                 var matchDates = soulfeathers.AvailableDates.Intersect(smileys.OpenDates);
                 var dateMatches = new List<Seasons>(matchDates);
-                var earliestDate = smileys.OpenDates.First(soulfeathers.AvailableDates.Contains));
+                var earliestDate = smileys.OpenDates.First(soulfeathers.AvailableDates.Contains);
                 if (smileys.OpenDates.Any(soulfeathers.AvailableDates.Contains))
                 {
                     Console.WriteLine($"Let's book sometime in {matchDates}");
+                    soulfeathers.Booked = true;
 
                 }
                 else
                 {
                     Console.WriteLine($"Contact us again, we have open dates in {smileys.OpenDates}");
                 }
-            
-
-                
-
-
-
-
 
             }
+            //Console.WriteLine($"You);
         }
     }
 }

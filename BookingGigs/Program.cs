@@ -16,20 +16,20 @@ namespace BookingGigs
                 new List<Styles>() { Styles.Rock, Styles.Funk, Styles.Soul },
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand },
                 new List<Seasons>() { Seasons.Summer, Seasons.Winter },
-                "Slabtown, SC",false);
+                "Slabtown, SC", false);
 
-           /* MyBands crowehawk = new MyBands("CroweHawk", 2, "@cradbrowe",
-                new List<Styles>() { Styles.Rock, Styles.Acoustic, Styles.SingSong },
-                new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.Acoustic },
-                new List<Seasons>() { Seasons.Summer, Seasons.Spring },
-                "Greenville, SC", false);
+            /* MyBands crowehawk = new MyBands("CroweHawk", 2, "@cradbrowe",
+                 new List<Styles>() { Styles.Rock, Styles.Acoustic, Styles.SingSong },
+                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.Acoustic },
+                 new List<Seasons>() { Seasons.Summer, Seasons.Spring },
+                 "Greenville, SC", false);
 
-            MyBands nitrograss = new MyBands("Nitrograss!", 4, "@chuckwood",
-                1000, new List<Styles>() { Styles.Bluegrass, Styles.Acoustic, Styles.Pop },
-                new List<NoiseLevel>() { NoiseLevel.FullBand, NoiseLevel.Acoustic },
-                new List<Seasons>() { Seasons.Summer, Seasons.Spring, Seasons.Fall, Seasons.Winter },
-                "Highlands, NC", false);
-                */
+             MyBands nitrograss = new MyBands("Nitrograss!", 4, "@chuckwood",
+                 1000, new List<Styles>() { Styles.Bluegrass, Styles.Acoustic, Styles.Pop },
+                 new List<NoiseLevel>() { NoiseLevel.FullBand, NoiseLevel.Acoustic },
+                 new List<Seasons>() { Seasons.Summer, Seasons.Spring, Seasons.Fall, Seasons.Winter },
+                 "Highlands, NC", false);
+                 */
 
             /*PotentialVenues handlebar = new PotentialVenues("The Handlebar", "Greenville,SC", 300, true,
                 "@handlebar", new List<Seasons>() { Seasons.Spring, Seasons.Fall }, 600, 900,
@@ -43,61 +43,83 @@ namespace BookingGigs
                 "@peacecenterbooking", new List<Seasons>() { Seasons.Summer, Seasons.Fall }, 1500, 2400,
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand, NoiseLevel.Acoustic }, false);
                 */
-
-            var dateMatch = new List<Seasons>();
+            var matchDates = soulfeathers.AvailableDates.Intersect(smileys.OpenDates);
+            var dateMatches = new List<Seasons>(matchDates);
+            var earliestDate = smileys.OpenDates.First(soulfeathers.AvailableDates.Contains);
+            //var dateMatch = new List<Seasons>();
             //var noiseMatch = new List<NoiseLevel>();
-            bool willingToBook;
+            //bool willingToBook;
             int memberPay;
-            while (soulfeathers.Booked == false)
+            int finalPay;
+            if (soulfeathers.Booked == false)
+
             {
-                Console.WriteLine($"Get a booking for {soulfeathers}");
+                Console.WriteLine($"Get a booking for {soulfeathers.BandName}");
                 Console.WriteLine($"Your band has {soulfeathers.BandSize} members");
                 Console.WriteLine("How much $ does each member need to make?");
                 memberPay = int.Parse(Console.ReadLine());
                 soulfeathers.AskingPay = memberPay * (soulfeathers.BandSize);
-                var noiseMatch = new List<NoiseLevel>(smileys.NoiseLevelAllowed.Intersect(soulfeathers.NoiseLevel));
+
+
                 if (smileys.NoiseLevelAllowed.Any(NoiseLevel => soulfeathers.NoiseLevel.Contains(NoiseLevel)))
                 {
                     Console.WriteLine($"{soulfeathers.BandName} should fit in well at {smileys.Name}.");
-                    Console.WriteLine($"{soulfeathers.BandName} should play at a {noiseMatch} level)");
-                }
 
-                if (soulfeathers.AskingPay >= smileys.initialPay)
-                {
-                    
-                    Console.WriteLine($"{smileys.Name} can pay that.");
-                }
-                else
-                {
-                    Console.WriteLine($"Thats more than {smileys.Name} offered");
-                    Console.WriteLine($"Send {smileys.Contact} at {smileys.Name} your minimum fee");
-                    Console.WriteLine($"What is {soulfeathers.BandName} bottom dollar");
-                    soulfeathers.MinimumPay = int.Parse(Console.ReadLine());
-                    if (soulfeathers.MinimumPay > smileys.Pay)
+
+
+
+                    if (soulfeathers.AskingPay < smileys.initialPay)
                     {
-                        Console.WriteLine($"Your band is too good for this {smileys.Name} joint");
+                        finalPay = soulfeathers.AskingPay;
+                        Console.WriteLine($"{smileys.Name} can pay that.");
                     }
                     else
                     {
-                        Console.WriteLine($"Lets see if we can find a date");
-                    }
-                }
-                var matchDates = soulfeathers.AvailableDates.Intersect(smileys.OpenDates);
-                var dateMatches = new List<Seasons>(matchDates);
-                var earliestDate = smileys.OpenDates.First(soulfeathers.AvailableDates.Contains);
-                if (smileys.OpenDates.Any(soulfeathers.AvailableDates.Contains))
-                {
-                    Console.WriteLine($"Let's book sometime in {matchDates}");
-                    soulfeathers.Booked = true;
+                        Console.WriteLine($"Thats more than {smileys.Name} offered");
+                        Console.WriteLine($"Send {smileys.Contact} at {smileys.Name} your minimum fee");
+                        Console.WriteLine($"What is {soulfeathers.BandName} bottom dollar");
+                        soulfeathers.MinimumPay = int.Parse(Console.ReadLine());
+                        if (soulfeathers.MinimumPay > smileys.Pay)
+                        {
+                            Console.WriteLine($"Your band is too good for this {smileys.Name} joint");
 
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{smileys.Name} agrees to {soulfeathers.MinimumPay}");
+                            Console.WriteLine($"Lets see if we can find a date");
+                            finalPay = soulfeathers.MinimumPay;
+                        }
+                    }
+
+                    if (smileys.OpenDates.Any(soulfeathers.AvailableDates.Contains))
+                    {
+                        Console.WriteLine($"Let's book sometime in: {earliestDate}");
+                        soulfeathers.Booked = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Contact us again, we have the following open dates:");
+                        smileys.OpenDates.ForEach(x => Console.Write(", ", x));
+                    }
+                    if (soulfeathers.Booked == true)
+                    {
+                        Console.WriteLine($"Congrats {soulfeathers.BandName} is booked at {smileys.Name} in {earliestDate}.");
+                        Console.WriteLine($"{smileys.Name} is in {smileys.Location}");
+                        Console.WriteLine($"{soulfeathers.BandContact} should contact {smileys.Contact} for set up times");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No gigs available, try again soon");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine($"Contact us again, we have open dates in {smileys.OpenDates}");
+                    Console.WriteLine($"{soulfeathers.BandName} cannot play at our level. Please find another venue.");
                 }
 
+
             }
-            //Console.WriteLine($"You);
         }
     }
 }

@@ -53,8 +53,7 @@ namespace BookingGigs
             List<NoiseLevel> _NoiseLevel,
             List<Seasons> _AvailableDates,
             string _CurrentLocale,
-            bool _booked,
-            
+            bool _booked,            
             )
         {
             BandName = _name;
@@ -70,7 +69,7 @@ namespace BookingGigs
 
         }
 
-        public 
+        
 
 
     }

@@ -16,9 +16,9 @@ namespace BookingGigs
                 new List<Styles>() { Styles.Rock, Styles.Funk, Styles.Soul },
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand },
                 new List<Seasons>() { Seasons.Summer, Seasons.Winter },
-                "Slabtown, SC"/*, false*/);
+                "Slabtown, SC",false);
 
-            MyBands crowehawk = new MyBands("CroweHawk", 2, "@cradbrowe",
+           /* MyBands crowehawk = new MyBands("CroweHawk", 2, "@cradbrowe",
                 new List<Styles>() { Styles.Rock, Styles.Acoustic, Styles.SingSong },
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.Acoustic },
                 new List<Seasons>() { Seasons.Summer, Seasons.Spring },
@@ -29,19 +29,20 @@ namespace BookingGigs
                 new List<NoiseLevel>() { NoiseLevel.FullBand, NoiseLevel.Acoustic },
                 new List<Seasons>() { Seasons.Summer, Seasons.Spring, Seasons.Fall, Seasons.Winter },
                 "Highlands, NC", false);
+                */
 
-            PotentialVenues handlebar = new PotentialVenues("The Handlebar", "Greenville,SC", 300, true,
+            /*PotentialVenues handlebar = new PotentialVenues("The Handlebar", "Greenville,SC", 300, true,
                 "@handlebar", new List<Seasons>() { Seasons.Spring, Seasons.Fall }, 600, 900,
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand }, false);
-
+                */
             PotentialVenues smileys = new PotentialVenues("Smiley's Listening Room", "Greenville,SC", 60, false,
                 "@smileybooking", new List<Seasons>() { Seasons.Winter, Seasons.Spring }, 300, 500,
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.Acoustic }, false);
-
+            /*
             PotentialVenues peaceCenter = new PotentialVenues("The Peace Center", "Greenville,SC", 300, true,
                 "@peacecenterbooking", new List<Seasons>() { Seasons.Summer, Seasons.Fall }, 1500, 2400,
                 new List<NoiseLevel>() { NoiseLevel.Brokedown, NoiseLevel.FullBand, NoiseLevel.Acoustic }, false);
-
+                */
 
             var dateMatch = new List<Seasons>();
             //var noiseMatch = new List<NoiseLevel>();
@@ -78,13 +79,13 @@ namespace BookingGigs
                     }
                     else
                     {
-                        Console.WriteLine($"Lets see how loud {soulfeathers.BandName} are");
+                        Console.WriteLine($"Lets see if we can find a date");
                     }
                 }
                 var matchDates = soulfeathers.AvailableDates.Intersect(smileys.OpenDates);
                 var dateMatches = new List<Seasons>(matchDates);
                 var earliestDate = smileys.OpenDates.First(soulfeathers.AvailableDates.Contains));
-                if (smileys.OpenDates.any(soulfeathers.AvailableDates.Contains))
+                if (smileys.OpenDates.Any(soulfeathers.AvailableDates.Contains))
                 {
                     Console.WriteLine($"Let's book sometime in {matchDates}");
 
